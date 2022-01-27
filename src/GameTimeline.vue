@@ -61,9 +61,12 @@ export default {
   border-bottom: thin solid #2c3e50;
   display: flex;
   max-width: 200px;
+  gap: 4px;
   flex-direction: column;
+
   .game-timeline-row {
     display: flex;
+
     .game-timeline-label {
       text-transform: uppercase;
       white-space: nowrap;
@@ -72,7 +75,10 @@ export default {
       min-width: 80px;
       text-align: left;
       padding: 0 8px;
+      line-height: 1.2rem;
+      max-height: 100%;
     }
+
     button {
       margin: 4px;
       width: 100%;

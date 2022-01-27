@@ -1,13 +1,13 @@
-import {computed, reactive, toRefs} from "vue";
-import { DateTime } from "luxon";
-import {random} from "lodash";
-import {createSharedComposable, useIntervalFn, useLocalStorage} from "@vueuse/core";
+import { computed, reactive, toRefs } from 'vue'
+import { DateTime } from 'luxon'
+import { random } from 'lodash'
+import { createSharedComposable, useIntervalFn, useLocalStorage } from '@vueuse/core'
 
 interface State {
   clock?: DateTime
 }
 const state = reactive<State>({
-  clock: undefined
+  clock: undefined,
 })
 
 const saveGame = useLocalStorage<string>('clock', '')
@@ -15,22 +15,20 @@ const saveGame = useLocalStorage<string>('clock', '')
 const useSharedIntervalFn = createSharedComposable(useIntervalFn)
 
 export default () => {
-
-  const {  resume, pause, isActive } = useSharedIntervalFn(() => tick(), 10000, {immediate: false})
+  const { resume, pause, isActive } = useSharedIntervalFn(() => tick(), import.meta.env.VITE_TICK_INTERVAL as unknown as number, { immediate: false })
 
   const init = () => {
     if (saveGame.value !== '')
       state.clock = DateTime.fromISO(saveGame.value)
     else
-      state.clock = DateTime.local(random(1945, DateTime.now().year), random(1, 12), random(1, 25))
+      state.clock = DateTime.local(random(1945, 1970), random(1, 12), random(1, 25))
 
     resume()
-
   }
 
   // Every 10s default
   const tick = () => {
-    state.clock = state.clock?.plus({day: 1})
+    state.clock = state.clock?.plus({ day: 1 })
     console.debug('Tick!', state.clock?.toISODate())
   }
 
@@ -43,7 +41,9 @@ export default () => {
 
   return {
     ...toRefs(state),
-    resume, pause, isActive,
+    resume,
+    pause,
+    isActive,
     display,
     init,
     tick,

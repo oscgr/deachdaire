@@ -1,22 +1,20 @@
 <script lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
-import {defineComponent, onMounted} from "vue";
-import useCountries from "./stores/useCountries";
-import useClock from "./stores/useClock";
-import AppHeader from "./AppHeader.vue";
-import GameTimeline from "./GameTimeline.vue";
+import { defineComponent, onMounted } from 'vue'
+import useCountries from './stores/useCountries'
+import useClock from './stores/useClock'
+import AppHeader from './AppHeader.vue'
+import GameTimeline from './GameTimeline.vue'
+import GameCountries from './GameCountries.vue'
 
 export default defineComponent({
   components: {
+    GameCountries,
     GameTimeline,
     AppHeader,
-    HelloWorld,
   },
   setup() {
-    const {init: initCountries, save: saveCountries} = useCountries()
-    const {init: initClock, save: saveClock, display} = useClock()
+    const { init: initCountries, save: saveCountries } = useCountries()
+    const { init: initClock, save: saveClock, display } = useClock()
     onMounted(() => {
       initCountries()
       initClock()
@@ -27,23 +25,14 @@ export default defineComponent({
     return {
       display,
     }
-  }
+  },
 })
 </script>
-
 
 <template>
   <AppHeader />
   <GameTimeline />
-  <pre class="language-ascii-art">
- _____                  _     _ _               __
-  |  __ \                | |   | (_)             / _|
- | |__) |___ _ __  _   _| |__ | |_  ___    ___ | |_
-  |  _  // _ \ '_ \| | | | '_ \| | |/ __|  / _ \|  _|
-| | \ \  __/ |_) | |_| | |_) | | | (__  | (_) | |
-|_|  \_\___| .__/ \__,_|_.__/|_|_|\___|  \___/|_|
-
-  </pre>
+  <GameCountries />
 </template>
 
 <style lang="scss">
@@ -71,9 +60,7 @@ button, input[type="submit"], input[type="reset"] {
   display: flex;
   align-content: center;
   flex-direction: column;
-  font-family: "Lucida Console", Monaco, monospace !important;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Courier New', monospace;
   text-align: center;
   color: #2c3e50;
 }

@@ -1,4 +1,4 @@
-import {RelationshipModifierEvent} from "./Event";
+import type { RelationshipModifierEvent } from './Event'
 
 // export enum Origin {
 //   NORTH_AMERICA = "NORTH_AMERICA",
@@ -23,10 +23,10 @@ import {RelationshipModifierEvent} from "./Event";
 // }
 
 export enum Regime {
-  TOTALITARIAN = "TOTALITARIAN",
-  AUTHORITARIAN = "AUTHORITARIAN",
-  FLAWED_DEMOCRACY = "FLAWED_DEMOCRACY",
-  FULL_DEMOCRACY = "FULL_DEMOCRACY",
+  TOTALITARIAN = 'TOTALITARIAN',
+  AUTHORITARIAN = 'AUTHORITARIAN',
+  FLAWED_DEMOCRACY = 'FLAWED_DEMOCRACY',
+  FULL_DEMOCRACY = 'FULL_DEMOCRACY',
 }
 
 export interface Country {
@@ -36,7 +36,7 @@ export interface Country {
   // origin: Origin
 
   // semi-fixed
-  regime: Regime,
+  regime: Regime
   // var
   modifiers: RelationshipModifierEvent[]
 
@@ -104,4 +104,3 @@ export interface Country {
 //     this.id = v4();
 //   }
 // }
-

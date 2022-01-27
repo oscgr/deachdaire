@@ -1,7 +1,6 @@
 <template>
 <div class="game-bar">
     <div class="game-bar-progress" />
-<!--    <div class="game-bar-value" v-text="percent" />-->
   </div>
 </template>
 <script lang="ts">
